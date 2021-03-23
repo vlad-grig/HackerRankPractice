@@ -6,58 +6,42 @@ public class BirthdayCandles {
     public static void main(String[] args) {
 
         List <Integer> candles = new ArrayList <>();
-        candles.add(4);
-        candles.add(3);
-        candles.add(2);
-        candles.add(4);
-        candles.add(1);
-        candles.add(5);
-        candles.add(2);
-        candles.add(1);
-        candles.add(3);
-        candles.add(3);
-        candles.add(3);
-        candles.add(3);
-        int cakeCandles = birthdayCakeCandles(candles);
+        candles.add(18);
+        candles.add(90);
+        candles.add(90);
+        candles.add(13);
+        candles.add(90);
+        candles.add(75);
+        candles.add(90);
+        candles.add(8);
+        candles.add(90);
+        candles.add(43);
+
+        int cakeCandles = birthdayCakeCandles1(candles);
         System.out.println(cakeCandles);
 
         int candles2 = birthdayCakeCandles2(candles);
         System.out.println(candles2);
     }
 
-    //this function is faster but not enough faster for HackerRank(only 80%)
-    static int birthdayCakeCandles(List <Integer> candles) {
-        int numberOfCandles = 0;
-        Set <Integer> setList = new HashSet <>(candles);
-        for(Integer next : setList) {
-            int count = 0;
-            for(Integer number : candles) {
-                if (next.equals(number)) {
-                    count++;
-                    if (numberOfCandles < count) {
-                        numberOfCandles = count;
-                    }
-                }
+    //my solution
+    static int birthdayCakeCandles1(List <Integer> candles) {
+        int countTallest = 0;
+        int tallest = 0;
+        candles.sort(Collections.reverseOrder());
+        tallest = candles.get(0);
+        for(Integer candle : candles) {
+            if (tallest == candle) {
+                countTallest++;
+            } else {
+                break;
             }
         }
-        return numberOfCandles;
+        return countTallest;
     }
 
-    //this function is lower than the first one
+    //same result but... 1 line instead of 10
     static int birthdayCakeCandles2(List <Integer> candles) {
-        int max = 0;
-        for(int i = 0; i < candles.size(); i++) {
-            int number = candles.get(i);
-            int count = 0;
-            for(int currentElement : candles) {
-                if (number == currentElement) {
-                    count++;
-                    if (count > max) {
-                        max = count;
-                    }
-                }
-            }
-        }
-        return max;
+        return Collections.frequency(candles, Collections.max(candles));
     }
 }
