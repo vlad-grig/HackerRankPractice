@@ -1,4 +1,4 @@
-package com.company;
+package com.company.algorithms;
 
 public class LongArraySum {
     public static void main(String[] args) {

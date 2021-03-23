@@ -1,11 +1,11 @@
-package com.company;
+package com.company.algorithms;
 
 public class StairCase {
 
     public static void main(String[] args) {
 
-        stairCase1(5);
-        stairCase2(5);
+        stairCase1(7);
+        stairCase2(7);
 
     }
 

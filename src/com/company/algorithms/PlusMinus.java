@@ -1,4 +1,4 @@
-package com.company;
+package com.company.algorithms;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
